@@ -56,7 +56,7 @@ class Collection extends BaseCollection
      */
     protected function build()
     {
-        $breadcrumbs = $this->breadcrumbs;
+        $breadcrumbs = $this->data;
         if ($breadcrumbs) {
             $breadcrumbs[0]->setFirst(true);
             $breadcrumbs[count($breadcrumbs) - 1]->setLast(true);

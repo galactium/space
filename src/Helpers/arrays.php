@@ -92,11 +92,11 @@ if (!function_exists('Galactium\Space\Helpers\arrayPluck')) {
 
 if (!function_exists('Galactium\Space\Helpers\arrayHas')) {
     /**
-     * @param array $array
+     * @param array|\ArrayAccess $array
      * @param $keys
      * @return bool
      */
-    function arrayHas(array $array, $keys): bool
+    function arrayHas($array, $keys): bool
     {
         if (is_null($keys)) {
             return false;
