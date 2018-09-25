@@ -1,5 +1,7 @@
 # Galactium Space
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/97a54361720e408b97df1db265b8e953)](https://www.codacy.com/app/grigoriy.ivanov.on/space?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=galactium/space&amp;utm_campaign=Badge_Grade)
+
 Galactium Space is a light library to provide extended functionality for Galactium projects.
 
 ### Requirements
