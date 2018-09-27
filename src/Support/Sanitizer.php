@@ -8,8 +8,8 @@
 namespace Galactium\Space\Support;
 
 
-use function Galactium\Helpers\arrayGet;
-use function Galactium\Helpers\arraySet;
+use function Galactium\Space\Helpers\arrayGet;
+use function Galactium\Space\Helpers\arraySet;
 
 class Sanitizer
 {

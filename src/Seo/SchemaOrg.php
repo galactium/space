@@ -10,7 +10,7 @@ namespace Galactium\Space\Seo;
 use Phalcon\Di\Injectable;
 use Spatie\SchemaOrg\Schema;
 use Spatie\SchemaOrg\Type;
-use function Galactium\Helpers\arrayHas;
+use function Galactium\Space\Helpers\arrayHas;
 
 class SchemaOrg extends Injectable
 {

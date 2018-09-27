@@ -26,7 +26,7 @@ use Galactium\Space\Translation\Adapter\NestedArray;
 use Galactium\Space\Translation\Loader\LoaderInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Translate\AdapterInterface;
-use function Galactium\Helpers\arrayHas;
+use function Galactium\Space\Helpers\arrayHas;
 
 class Manager extends Injectable
 {
