@@ -25,10 +25,9 @@
  * @see https://github.com/illuminate/support
  */
 
-namespace Galactium\Helpers;
+namespace Galactium\Space\Helpers;
 
 use Phalcon\Mvc\ModelInterface;
-use function Galactium\Space\Helpers\value;
 
 if (!function_exists('Galactium\Space\Helpers\arrayGet')) {
     /**
