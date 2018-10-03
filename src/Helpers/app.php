@@ -68,7 +68,7 @@ if (!function_exists('Galactium\Space\Helpers\camelize')) {
     }
 }
 
-if (!function_exists('\Galactium\Space\Helpers\value')) {
+if (!function_exists('Galactium\Space\Helpers\value')) {
     /**
      * @param $value
      * @return mixed

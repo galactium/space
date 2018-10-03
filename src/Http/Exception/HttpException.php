@@ -84,4 +84,12 @@ abstract class HttpException extends \RuntimeException implements HttpExceptionI
         $this->headers = $headers;
     }
 
+    /**
+     * @return bool
+     */
+    public function hasHeaders(): bool
+    {
+        return (bool)$this->headers;
+    }
+
 }

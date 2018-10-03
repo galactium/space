@@ -45,4 +45,9 @@ interface HttpExceptionInterface
      * @param \Phalcon\Http\Response\HeadersInterface $headers
      */
     public function setHeaders(HeadersInterface $headers): void;
+
+    /**\
+     * @return bool
+     */
+    public function hasHeaders(): bool;
 }

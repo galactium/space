@@ -35,7 +35,7 @@ use Phalcon\Mvc\Model\ValidationFailed;
 class Manager extends Injectable
 {
     /**
-     * @param \Throwable $e
+     * @param \Throwable|HttpExceptionInterface $e
      * @return Response
      * @throws \Throwable
      */
@@ -52,8 +52,11 @@ class Manager extends Injectable
         $response->setStatusCode(503);
 
         if ($this->isHttpException($e)) {
-            $response->setStatusCode($e->getStatusCode())
-                ->setHeaders($e->getHeaders());
+            $response->setStatusCode($e->getStatusCode());
+
+            if ($e->hasHeaders()) {
+                $response->setHeaders($e->getHeaders());
+            }
         }
 
         if ($this->request->isAjax()) {
@@ -138,11 +141,13 @@ class Manager extends Injectable
     }
 
     /**
-     * @param \Throwable $e
+     * @param \Throwable|HttpExceptionInterface $e
      * @return string
      */
     protected function prepareHtmlResponse(\Throwable $e): string
     {
+        $this->view->finish();
+
         if ($this->isHttpException($e)) {
             $this->view->start()->render('errors', 'error-' . $e->getStatusCode(), ['exception' => $e])->finish();
         } else {

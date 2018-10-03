@@ -100,30 +100,45 @@ if (!function_exists('Galactium\Space\Helpers\arrayHas')) {
         if (is_null($keys)) {
             return false;
         }
-
+        $keys = (array)$keys;
+        if (!$array) {
+            return false;
+        }
         if ($keys === []) {
             return false;
         }
-
-        $keys = (array)$keys;
-
         foreach ($keys as $key) {
-
-            if ($array instanceof \ArrayAccess) {
-                $result = $array->offsetExists($key);
-            } else {
-                $result = array_key_exists($key, $array);
-            }
-
-            if ($result) {
+            $subKeyArray = $array;
+            if (arrayExists($array, $key)) {
                 continue;
             }
-
+            foreach (explode('.', $key) as $segment) {
+                if (arrayExists($subKeyArray, $segment)) {
+                    $subKeyArray = $subKeyArray[$segment];
+                } else {
+                    return false;
+                }
+            }
         }
-        return $result ?? false;
+        return true;
 
     }
 }
+if (!function_exists('Galactium\Space\Helpers\arrayExists')) {
+    /**
+     * @param array|\ArrayAccess $array
+     * @param string|int $key
+     * @return bool
+     */
+    function arrayExists($array, $key): bool
+    {
+        if ($array instanceof ArrayAccess) {
+            return $array->offsetExists($key);
+        }
+        return array_key_exists($key, $array);
+    }
+}
+
 if (!function_exists('Galactium\Space\Helpers\arraySet')) {
     /**
      * @param array $array
@@ -178,8 +193,8 @@ if (!function_exists('Galactium\Space\Helpers\arrayFlatten')) {
 
 if (!function_exists('Galactium\Space\Helpers\dataGet')) {
     /**
-     * @param $target
-     * @param $key
+     * @param mixed $target
+     * @param string|int $key
      * @param null $default
      * @return mixed
      */
