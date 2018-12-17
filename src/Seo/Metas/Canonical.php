@@ -28,9 +28,9 @@ class Canonical extends Meta
 {
     protected $tag = 'link';
 
-    protected $name = 'canonical';
+    protected $name = 'rel';
 
-    protected $property = 'rel';
+    protected $property = 'canonical';
 
     /**
      * Canonical constructor.

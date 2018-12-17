@@ -138,7 +138,7 @@ class Meta implements MetaInterface
     public function isLink(): bool
     {
         return in_array($this->getName(), [
-            'alternate', 'archives', 'author', 'canonical', 'first', 'help', 'icon', 'index', 'last',
+            'alternate', 'archives', 'author', 'rel', 'first', 'help', 'icon', 'index', 'last',
             'license', 'next', 'nofollow', 'noreferrer', 'pingback', 'prefetch', 'prev', 'publisher'
         ]);
     }
