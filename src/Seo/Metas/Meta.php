@@ -78,7 +78,7 @@ class Meta implements MetaInterface
      */
     public function key(): string
     {
-        return $this->getName();
+        return $this->getName() . '-' . $this->getProperty();
     }
 
     /**

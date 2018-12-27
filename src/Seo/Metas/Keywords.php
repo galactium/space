@@ -26,7 +26,9 @@ namespace Galactium\Space\Seo\Metas;
 
 class Keywords extends Meta
 {
-    protected $name = 'keywords';
+    protected $name = 'name';
+
+    protected $property = 'keywords';
 
     /**
      * Description constructor.
@@ -34,7 +36,7 @@ class Keywords extends Meta
      */
     public function __construct(?string $content)
     {
-        parent::__construct($content, $this->name);
+        parent::__construct($content, $this->name, $this->property);
     }
 
 
