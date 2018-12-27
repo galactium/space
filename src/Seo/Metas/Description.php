@@ -26,7 +26,9 @@ namespace Galactium\Space\Seo\Metas;
 
 class Description extends Meta
 {
-    protected $name = 'description';
+    protected $name = 'name';
+
+    protected $property = 'description';
 
     /**
      * Description constructor.
@@ -34,7 +36,7 @@ class Description extends Meta
      */
     public function __construct(?string $content)
     {
-        parent::__construct($content, $this->name);
+        parent::__construct($content, $this->name, $this->property);
     }
 
 
