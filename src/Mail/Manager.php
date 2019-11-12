@@ -1,6 +1,6 @@
 <?php
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -11,23 +11,26 @@ namespace Galactium\Space\Mail;
 use Phalcon\Config;
 use Phalcon\Di\Injectable;
 use Phalcon\Mvc\View\Simple;
+use Swift_Mailer;
+use Swift_Message;
+use Swift_Transport;
 
 class Manager extends Injectable
 {
     public const HTML = 'text/html';
     public const PLAIN = 'text/plain';
     /**
-     * @var \Swift_Mailer
+     * @var Swift_Mailer
      */
     protected $mailer;
 
     /**
-     * @var \Swift_Transport
+     * @var Swift_Transport
      */
     protected $transport;
 
     /**
-     * @var \Phalcon\Mvc\View\Simple
+     * @var Simple
      */
     protected $view;
 
@@ -37,17 +40,17 @@ class Manager extends Injectable
     protected $failedRecipients = [];
 
     /**
-     * @var \Phalcon\Config
+     * @var Config
      */
     protected $config = [];
 
     /**
      * Manager constructor.
-     * @param \Swift_Mailer $mailer
-     * @param \Swift_Transport $transport
-     * @param \Phalcon\Config $config
+     * @param Swift_Mailer $mailer
+     * @param Swift_Transport $transport
+     * @param Config $config
      */
-    public function __construct(\Swift_Mailer $mailer, \Swift_Transport $transport, Config $config)
+    public function __construct(Swift_Mailer $mailer, Swift_Transport $transport, Config $config)
     {
         $this->mailer = $mailer;
         $this->transport = $transport;
@@ -66,11 +69,11 @@ class Manager extends Injectable
 
 
     /**
-     * @return \Galactium\Space\Mail\Message
+     * @return Message
      */
     public function message(): Message
     {
-        $message = new Message($this, new \Swift_Message());
+        $message = new Message($this, new Swift_Message());
 
         if ($this->config->get('from', false)) {
             $message->from(
@@ -90,7 +93,7 @@ class Manager extends Injectable
     }
 
     /**
-     * @return \Phalcon\Mvc\View\Simple
+     * @return Simple
      */
     public function getView(): Simple
     {
@@ -117,17 +120,17 @@ class Manager extends Injectable
     }
 
     /**
-     * @return \Swift_Mailer
+     * @return Swift_Mailer
      */
-    public function getMailer(): \Swift_Mailer
+    public function getMailer(): Swift_Mailer
     {
         return $this->mailer;
     }
 
     /**
-     * @return \Swift_Transport
+     * @return Swift_Transport
      */
-    public function getTransport(): \Swift_Transport
+    public function getTransport(): Swift_Transport
     {
         return $this->transport;
     }

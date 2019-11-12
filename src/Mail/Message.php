@@ -1,11 +1,15 @@
 <?php
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
 
 namespace Galactium\Space\Mail;
+
+use Swift_Attachment;
+use Swift_Image;
+use Swift_Message;
 
 /**
  * Class Message
@@ -14,20 +18,20 @@ namespace Galactium\Space\Mail;
 class Message
 {
     /**
-     * @var \Galactium\Space\Mail\Manager
+     * @var Manager
      */
     protected $manager;
     /**
-     * @var \Swift_Message
+     * @var Swift_Message
      */
     protected $swiftMessage;
 
     /**
      * Message constructor.
-     * @param \Galactium\Space\Mail\Manager $manager
-     * @param \Swift_Message $swiftMessage
+     * @param Manager $manager
+     * @param Swift_Message $swiftMessage
      */
-    public function __construct(Manager $manager, \Swift_Message $swiftMessage)
+    public function __construct(Manager $manager, Swift_Message $swiftMessage)
     {
         $this->manager = $manager;
         $this->swiftMessage = $swiftMessage;
@@ -102,7 +106,7 @@ class Message
      * @param string|array $address
      * @param string|null $name
      * @param bool $override
-     * @return $this|\Galactium\Space\Mail\Message
+     * @return $this|Message
      */
     public function to($address, string $name = null, $override = false)
     {
@@ -133,7 +137,7 @@ class Message
      * @param string|array $address
      * @param string|null $name
      * @param bool $override
-     * @return $this|\Galactium\Space\Mail\Message
+     * @return $this|Message
      */
     public function cc($address, string $name = null, $override = false)
     {
@@ -148,7 +152,7 @@ class Message
      * @param string|array $address
      * @param string|null $name
      * @param bool $override
-     * @return $this|\Galactium\Space\Mail\Message
+     * @return $this|Message
      */
     public function bcc($address, string $name = null, $override = false)
     {
@@ -162,7 +166,7 @@ class Message
     /**
      * @param $address
      * @param string|null $name
-     * @return \Galactium\Space\Mail\Message
+     * @return Message
      */
     public function replyTo($address, string $name = null)
     {
@@ -208,7 +212,7 @@ class Message
      */
     public function attach(string $file, string $fileName = null, string $mime = null)
     {
-        $attachment = \Swift_Attachment::fromPath($file);
+        $attachment = Swift_Attachment::fromPath($file);
 
         if ($fileName) {
             $attachment->setFilename($fileName);
@@ -228,11 +232,11 @@ class Message
      */
     public function embed(string $file)
     {
-        return $this->swiftMessage->embed(\Swift_Image::fromPath($file));
+        return $this->swiftMessage->embed(Swift_Image::fromPath($file));
     }
 
     /**
-     * @return \Galactium\Space\Mail\Manager
+     * @return Manager
      */
     public function send()
     {
@@ -240,9 +244,9 @@ class Message
     }
 
     /**
-     * @return \Swift_Message
+     * @return Swift_Message
      */
-    public function getSwiftMessage(): \Swift_Message
+    public function getSwiftMessage(): Swift_Message
     {
         return $this->swiftMessage;
     }

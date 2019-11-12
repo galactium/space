@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2017
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -25,26 +25,28 @@ namespace Galactium\Space\Settings;
 
 use Phalcon\Config;
 use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\DiInterface;
 use Phalcon\Mvc\Model\ResultsetInterface;
+use Phalcon\Mvc\ModelInterface;
 use function Galactium\Space\Helpers\container;
 
 class Manager implements InjectionAwareInterface, ManagerInterface
 {
     /**
-     * @var \Phalcon\DiInterface
+     * @var DiInterface
      */
     protected $_dependencyInjector;
 
     /**
-     * @param \Phalcon\DiInterface $dependencyInjector
+     * @param DiInterface $dependencyInjector
      */
-    public function setDI(\Phalcon\DiInterface $dependencyInjector)
+    public function setDI(DiInterface $dependencyInjector)
     {
         $this->_dependencyInjector = $dependencyInjector;
     }
 
     /**
-     * @return \Phalcon\DiInterface
+     * @return DiInterface
      */
     public function getDI()
     {
@@ -129,7 +131,7 @@ class Manager implements InjectionAwareInterface, ManagerInterface
     }
 
     /**
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @param $context
      * @param $key
      * @param $value

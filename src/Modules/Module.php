@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2017
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -24,6 +24,7 @@ namespace Galactium\Space\Modules;
 
 
 use Phalcon\Di\ServiceProviderInterface;
+use Phalcon\DiInterface;
 use Phalcon\Mvc\ModuleDefinitionInterface;
 
 abstract class Module implements ModuleDefinitionInterface
@@ -34,16 +35,16 @@ abstract class Module implements ModuleDefinitionInterface
     protected $providers = [];
 
     /**
-     * @param \Phalcon\DiInterface|null $dependencyInjector
+     * @param DiInterface|null $dependencyInjector
      */
-    public function registerAutoloaders(\Phalcon\DiInterface $dependencyInjector = null)
+    public function registerAutoloaders(DiInterface $dependencyInjector = null)
     {
     }
 
     /**
-     * @param \Phalcon\DiInterface $dependencyInjector
+     * @param DiInterface $dependencyInjector
      * @return mixed
      */
-    abstract public function registerServices(\Phalcon\DiInterface $dependencyInjector);
+    abstract public function registerServices(DiInterface $dependencyInjector);
 
 }

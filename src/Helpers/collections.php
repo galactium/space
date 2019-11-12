@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -27,6 +27,9 @@
 
 namespace Galactium\Space\Helpers;
 
+use Closure;
+use InvalidArgumentException;
+
 if (!function_exists('Galactium\Space\Helpers\groupBy')) {
     /**
      * @param iterable $iterable
@@ -36,10 +39,10 @@ if (!function_exists('Galactium\Space\Helpers\groupBy')) {
     function groupBy(iterable $iterable, $key): array
     {
         if (!is_string($key) && !is_int($key) && !is_callable($key)) {
-            throw new \InvalidArgumentException('groupBy(): The key should be a string, sn integer or a function.');
+            throw new InvalidArgumentException('groupBy(): The key should be a string, sn integer or a function.');
         }
 
-        $isFunction = $key instanceof \Closure;
+        $isFunction = $key instanceof Closure;
 
         $grouped = [];
         foreach ($iterable as $value) {

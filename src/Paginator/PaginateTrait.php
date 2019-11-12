@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2017
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -25,6 +25,7 @@ namespace Galactium\Space\Paginator;
 
 use Phalcon\Mvc\Model\Query\BuilderInterface;
 use Phalcon\Paginator\Adapter\QueryBuilder;
+use stdClass;
 
 trait PaginateTrait
 {
@@ -32,7 +33,7 @@ trait PaginateTrait
      * @param BuilderInterface $builder
      * @param int $limit
      * @param int $page
-     * @return \stdClass
+     * @return stdClass
      */
     protected function paginate(BuilderInterface $builder, int $limit = 25, int $page = 1)
     {

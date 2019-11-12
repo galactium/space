@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -27,11 +27,12 @@
 
 namespace Galactium\Space\Helpers;
 
+use ArrayAccess;
 use Phalcon\Mvc\ModelInterface;
 
 if (!function_exists('Galactium\Space\Helpers\arrayGet')) {
     /**
-     * @param array|\ArrayAccess $array
+     * @param array|ArrayAccess $array
      * @param string $key
      * @param null $default
      * @return mixed
@@ -48,7 +49,7 @@ if (!function_exists('Galactium\Space\Helpers\arrayGet')) {
             return $array[$key] ?? value($default);
         }
         foreach (explode('.', $key) as $segment) {
-            if ((is_array($array) || $array instanceof \ArrayAccess) && arrayHas($array, $segment)) {
+            if ((is_array($array) || $array instanceof ArrayAccess) && arrayHas($array, $segment)) {
                 $array = $array[$segment];
             } else {
                 return value($default);
@@ -91,7 +92,7 @@ if (!function_exists('Galactium\Space\Helpers\arrayPluck')) {
 
 if (!function_exists('Galactium\Space\Helpers\arrayHas')) {
     /**
-     * @param array|\ArrayAccess $array
+     * @param array|ArrayAccess $array
      * @param $keys
      * @return bool
      */
@@ -126,7 +127,7 @@ if (!function_exists('Galactium\Space\Helpers\arrayHas')) {
 }
 if (!function_exists('Galactium\Space\Helpers\arrayExists')) {
     /**
-     * @param array|\ArrayAccess $array
+     * @param array|ArrayAccess $array
      * @param string|int $key
      * @return bool
      */
@@ -207,7 +208,7 @@ if (!function_exists('Galactium\Space\Helpers\dataGet')) {
         $key = is_array($key) ? $key : explode('.', $key);
 
         while (!is_null($segment = array_shift($key))) {
-            if ((is_array($target) || $target instanceof \ArrayAccess) && arrayHas($target, $segment)) {
+            if ((is_array($target) || $target instanceof ArrayAccess) && arrayHas($target, $segment)) {
                 $target = $target[$segment];
             } elseif (is_object($target) && $target instanceof ModelInterface) {
                 $target = $target->readAttribute($segment);

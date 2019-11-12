@@ -1,6 +1,6 @@
 <?php
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -8,21 +8,22 @@
 namespace Galactium\Space\Support;
 
 
+use Phalcon\FilterInterface;
 use function Galactium\Space\Helpers\arrayGet;
 use function Galactium\Space\Helpers\arraySet;
 
 class Sanitizer
 {
     /**
-     * @var \Phalcon\FilterInterface
+     * @var FilterInterface
      */
     protected $filter;
 
     /**
      * Sanitizer constructor.
-     * @param \Phalcon\FilterInterface $filter
+     * @param FilterInterface $filter
      */
-    public function __construct(\Phalcon\FilterInterface $filter)
+    public function __construct(FilterInterface $filter)
     {
         $this->filter = $filter;
     }

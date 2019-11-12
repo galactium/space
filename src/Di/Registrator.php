@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -25,11 +25,12 @@ namespace Galactium\Space\Di;
 
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Di\ServiceProviderInterface;
+use Phalcon\DiInterface;
 
 class Registrator implements InjectionAwareInterface
 {
     /**
-     * @var \Phalcon\DiInterface
+     * @var DiInterface
      */
     protected $di;
 
@@ -44,17 +45,17 @@ class Registrator implements InjectionAwareInterface
     }
 
     /**
-     * @return \Phalcon\DiInterface
+     * @return DiInterface
      */
-    public function getDi(): \Phalcon\DiInterface
+    public function getDi(): DiInterface
     {
         return $this->di;
     }
 
     /**
-     * @param \Phalcon\DiInterface $di
+     * @param DiInterface $di
      */
-    public function setDi(\Phalcon\DiInterface $di)
+    public function setDi(DiInterface $di)
     {
         $this->di = $di;
     }
