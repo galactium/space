@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,20 +16,25 @@
  */
 
 /**
- * Galactium @ 2017
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
 namespace Galactium\Space\Http;
 
-class Json implements \JsonSerializable, \ArrayAccess, \Countable, \Iterator
+use ArrayAccess;
+use Countable;
+use Iterator;
+use JsonSerializable;
+
+class Json implements JsonSerializable, ArrayAccess, Countable, Iterator
 {
     /**
      * @var $bool
      */
     protected $success = true;
     /**
-     * @var array|\JsonSerializable
+     * @var array|JsonSerializable
      */
     protected $data = [];
     /**
@@ -39,7 +44,7 @@ class Json implements \JsonSerializable, \ArrayAccess, \Countable, \Iterator
 
     /**
      * Json constructor.
-     * @param array|\JsonSerializable $data
+     * @param array|JsonSerializable $data
      */
     public function __construct($data = [])
     {
@@ -84,7 +89,7 @@ class Json implements \JsonSerializable, \ArrayAccess, \Countable, \Iterator
     }
 
     /**
-     * @return array|\JsonSerializable
+     * @return array|JsonSerializable
      */
     public function getData()
     {
@@ -92,7 +97,7 @@ class Json implements \JsonSerializable, \ArrayAccess, \Countable, \Iterator
     }
 
     /**
-     * @param array|\JsonSerializable $data
+     * @param array|JsonSerializable $data
      * @return Json
      */
     public function setData($data)

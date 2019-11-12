@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,12 +16,13 @@
  */
 
 /**
- * Galactium @ 2016
+ * Galactium @ 2019
  * @author Grigoriy Ivanov
  */
 
 namespace Galactium\Space\Mvc;
 
+use Phalcon\Mvc\Model\ResultsetInterface;
 use function Galactium\Space\Helpers\camelize;
 
 abstract class Model extends \Phalcon\Mvc\Model
@@ -41,7 +42,7 @@ abstract class Model extends \Phalcon\Mvc\Model
 
     /**
      * @param null $parameters
-     * @return \Phalcon\Mvc\Model\ResultsetInterface|$this[]|void
+     * @return ResultsetInterface|$this[]|void
      */
     public static function find($parameters = null)
     {

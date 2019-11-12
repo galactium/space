@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -25,8 +25,10 @@ namespace Galactium\Space\Http\Exception;
 
 
 use Phalcon\Http\Response\HeadersInterface;
+use RuntimeException;
+use Throwable;
 
-abstract class HttpException extends \RuntimeException implements HttpExceptionInterface
+abstract class HttpException extends RuntimeException implements HttpExceptionInterface
 {
     /**
      * @var string
@@ -39,11 +41,11 @@ abstract class HttpException extends \RuntimeException implements HttpExceptionI
     protected $statusCode;
 
     /**
-     * @var \Phalcon\Http\Response\HeadersInterface
+     * @var HeadersInterface
      */
     protected $headers;
 
-    public function __construct(string $message = null, \Throwable $previous = null, HeadersInterface $headers = null, int $code = 0)
+    public function __construct(string $message = null, Throwable $previous = null, HeadersInterface $headers = null, int $code = 0)
     {
         $this->headers = $headers;
 
@@ -69,7 +71,7 @@ abstract class HttpException extends \RuntimeException implements HttpExceptionI
     }
 
     /**
-     * @return \Phalcon\Http\Response\HeadersInterface
+     * @return HeadersInterface
      */
     public function getHeaders(): HeadersInterface
     {
@@ -77,7 +79,7 @@ abstract class HttpException extends \RuntimeException implements HttpExceptionI
     }
 
     /**
-     * @param \Phalcon\Http\Response\HeadersInterface $headers
+     * @param HeadersInterface $headers
      */
     public function setHeaders(HeadersInterface $headers): void
     {

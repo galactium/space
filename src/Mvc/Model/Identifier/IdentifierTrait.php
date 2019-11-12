@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -25,17 +25,18 @@ namespace Galactium\Space\Mvc\Model\Identifier;
 
 use Galactium\Space\Identifier\Identifier;
 use Galactium\Space\Identifier\IdentifierInterface;
+use Phalcon\Mvc\ModelInterface;
 
 
 trait IdentifierTrait
 {
     /**
-     * @return \Galactium\Space\Identifier\IdentifierInterface
+     * @return IdentifierInterface
      */
     public function identify(): IdentifierInterface
     {
         /**
-         * @var \Phalcon\Mvc\ModelInterface $this
+         * @var ModelInterface $this
          */
         $identityField = $this->modelsMetadata->getIdentityField($this);
         $identityFieldValue = $this->readAttribute($this->modelsMetadata->getIdentityField($this));

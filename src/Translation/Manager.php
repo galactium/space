@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -31,7 +31,7 @@ use function Galactium\Space\Helpers\arrayHas;
 class Manager extends Injectable
 {
     /**
-     * @var \Phalcon\Translate\AdapterInterface
+     * @var AdapterInterface
      */
     protected $adapter;
 
@@ -90,7 +90,7 @@ class Manager extends Injectable
         [$module, $group] = $this->parseKey($key);
 
         if ($group) {
-            if (arrayHas($this->resources, [$module, $group]) === false) {
+            if (arrayHas($this->resources, "{$module}.{$group}") === false) {
                 $this->resources[$module][$group] = $this->loader->load($this->locale, $module, $group);
                 return $this->resources[$module][$group];
             }

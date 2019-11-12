@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -24,18 +24,20 @@ namespace Galactium\Space\Modules;
 
 
 use Galactium\Space\Di\ServiceProvider;
+use Phalcon\Di\ServiceProviderInterface;
+use Phalcon\DiInterface;
 
 abstract class ModuleProvider extends ServiceProvider
 {
     /**
-     * @var \Phalcon\Di\ServiceProviderInterface[]
+     * @var ServiceProviderInterface[]
      */
     protected $providers = [];
 
     /**
-     * @param \Phalcon\DiInterface $di
+     * @param DiInterface $di
      */
-    public function register(\Phalcon\DiInterface $di)
+    public function register(DiInterface $di)
     {
         $di->get('registrator')->registerProviders($this->providers);
     }

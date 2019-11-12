@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -24,7 +24,12 @@
 namespace Galactium\Space\Support;
 
 
-class BaseCollection implements \JsonSerializable, \ArrayAccess, \Countable, \Iterator
+use ArrayAccess;
+use Countable;
+use Iterator;
+use JsonSerializable;
+
+class BaseCollection implements JsonSerializable, ArrayAccess, Countable, Iterator
 {
     /**
      * @var array
@@ -74,6 +79,9 @@ class BaseCollection implements \JsonSerializable, \ArrayAccess, \Countable, \It
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public final function count()
     {
         return count($this->data);
@@ -94,51 +102,87 @@ class BaseCollection implements \JsonSerializable, \ArrayAccess, \Countable, \It
         reset($this->data);
     }
 
+    /**
+     * @return bool
+     */
     public function valid()
     {
         return key($this->data) !== null;
     }
 
+    /**
+     * @return mixed
+     */
     public function current()
     {
         return current($this->data);
     }
 
+    /**
+     * @param $key
+     * @return mixed
+     */
     public final function __get($key)
     {
         return $this->offsetGet($key);
     }
 
+    /**
+     * @param $key
+     * @param $value
+     */
     public final function __set($key, $value)
     {
         $this->offsetSet($key, $value);
     }
 
+    /**
+     * @param mixed $offset
+     * @return mixed
+     */
     public final function offsetGet($offset)
     {
         return $this->data[$offset];
     }
 
+    /**
+     * @param mixed $offset
+     * @param mixed $value
+     */
     public final function offsetSet($offset, $value)
     {
         $this->data[$offset] = $value;
     }
 
+    /**
+     * @param $key
+     * @return bool
+     */
     public final function __isset($key)
     {
         return $this->offsetExists($key);
     }
 
+    /**
+     * @param mixed $offset
+     * @return bool
+     */
     public final function offsetExists($offset)
     {
         return isset($this->data[$offset]);
     }
 
+    /**
+     * @param $key
+     */
     public final function __unset($key)
     {
         $this->offsetUnset($key);
     }
 
+    /**
+     * @param mixed $offset
+     */
     public final function offsetUnset($offset)
     {
         unset($this->data[$offset]);

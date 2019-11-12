@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,21 +16,24 @@
  */
 
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
 namespace Galactium\Space\Helpers;
 
+use Closure;
 use Phalcon\Di;
+use Phalcon\DiInterface;
 use Phalcon\Text;
+use function getenv;
 
 
 if (!function_exists('Galactium\Space\Helpers\container')) {
     /**
      * @param null $service
      * @param array $params
-     * @return mixed|\Phalcon\DiInterface
+     * @return mixed|DiInterface
      */
     function container($service = null, $params = [])
     {
@@ -75,7 +78,7 @@ if (!function_exists('Galactium\Space\Helpers\value')) {
      */
     function value($value)
     {
-        return $value instanceof \Closure ? $value() : $value;
+        return $value instanceof Closure ? $value() : $value;
     }
 }
 
@@ -87,7 +90,7 @@ if (!function_exists('Galactium\Space\Helpers\env')) {
      */
     function env(string $key, $default = null)
     {
-        $value = \getenv($key);
+        $value = getenv($key);
         if ($value === false) {
             return value($default);
         }

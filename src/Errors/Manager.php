@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -31,15 +31,16 @@ use Phalcon\Http\Response;
 use Phalcon\Logger\AdapterInterface;
 use Phalcon\Mvc\Model\MessageInterface;
 use Phalcon\Mvc\Model\ValidationFailed;
+use Throwable;
 
 class Manager extends Injectable
 {
     /**
-     * @param \Throwable|HttpExceptionInterface $e
+     * @param Throwable|HttpExceptionInterface $e
      * @return Response
-     * @throws \Throwable
+     * @throws Throwable
      */
-    public function handle(\Throwable $e)
+    public function handle(Throwable $e)
     {
         try {
             $this->report($e);
@@ -69,10 +70,10 @@ class Manager extends Injectable
     }
 
     /**
-     * @param \Throwable $e
+     * @param Throwable $e
      * @return $this
      */
-    protected function report(\Throwable $e)
+    protected function report(Throwable $e)
     {
         /**@var AdapterInterface $logger */
 
@@ -88,19 +89,19 @@ class Manager extends Injectable
     }
 
     /**
-     * @param \Throwable $e
+     * @param Throwable $e
      * @return bool
      */
-    protected function isHttpException(\Throwable $e): bool
+    protected function isHttpException(Throwable $e): bool
     {
         return $e instanceof HttpExceptionInterface;
     }
 
     /**
-     * @param \Throwable $e
+     * @param Throwable $e
      * @return Json
      */
-    protected function prepareJsonResponse(\Throwable $e): Json
+    protected function prepareJsonResponse(Throwable $e): Json
     {
         $jsonResponse = new Json();
         if ($e instanceof ValidationFailed) {
@@ -130,10 +131,10 @@ class Manager extends Injectable
     }
 
     /**
-     * @param \Throwable $e
+     * @param Throwable $e
      * @return array
      */
-    protected function convertException(\Throwable $e)
+    protected function convertException(Throwable $e)
     {
         return [
             'message' => $e->getMessage(),
@@ -141,10 +142,10 @@ class Manager extends Injectable
     }
 
     /**
-     * @param \Throwable|HttpExceptionInterface $e
+     * @param Throwable|HttpExceptionInterface $e
      * @return string
      */
-    protected function prepareHtmlResponse(\Throwable $e): string
+    protected function prepareHtmlResponse(Throwable $e): string
     {
         $this->view->finish();
 

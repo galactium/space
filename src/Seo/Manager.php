@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2018
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -45,7 +45,7 @@ class Manager extends Injectable
     protected $schemaOrg;
 
     /**
-     * @var \Galactium\Space\Seo\Breadcrumbs\Collection
+     * @var Breadcrumbs\Collection
      */
     protected $breadcrumbs;
 

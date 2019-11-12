@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2018. Grigoriy Ivanov
+ * Copyright (c) 2020. Grigoriy Ivanov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  */
 
 /**
- * Galactium @ 2017
+ * Galactium @ 2020
  * @author Grigoriy Ivanov
  */
 
@@ -53,7 +53,7 @@ abstract class Listener implements InjectionAwareInterface
     /**
      * @param DiInterface $dependencyInjector
      */
-    public function setDI(\Phalcon\DiInterface $dependencyInjector)
+    public function setDI(DiInterface $dependencyInjector)
     {
         $this->di = $dependencyInjector;
     }
