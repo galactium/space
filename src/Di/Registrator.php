@@ -23,9 +23,9 @@
 namespace Galactium\Space\Di;
 
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
 
 class Registrator implements InjectionAwareInterface
 {
@@ -55,9 +55,9 @@ class Registrator implements InjectionAwareInterface
     /**
      * @param DiInterface $di
      */
-    public function setDi(DiInterface $di)
+    public function setDi(DiInterface $container): void
     {
-        $this->di = $di;
+        $this->di = $container;
     }
 
 

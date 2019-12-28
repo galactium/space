@@ -38,17 +38,17 @@ class Manager implements InjectionAwareInterface, ManagerInterface
     protected $_dependencyInjector;
 
     /**
-     * @param DiInterface $dependencyInjector
+     * @param DiInterface $container
      */
-    public function setDI(DiInterface $dependencyInjector)
+    public function setContainer(DiInterface $container)
     {
-        $this->_dependencyInjector = $dependencyInjector;
+        $this->_dependencyInjector = $container;
     }
 
     /**
      * @return DiInterface
      */
-    public function getDI()
+    public function getContainer()
     {
         return $this->_dependencyInjector;
     }

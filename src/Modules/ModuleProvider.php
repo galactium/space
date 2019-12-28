@@ -24,8 +24,8 @@ namespace Galactium\Space\Modules;
 
 
 use Galactium\Space\Di\ServiceProvider;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
 
 abstract class ModuleProvider extends ServiceProvider
 {
@@ -37,7 +37,7 @@ abstract class ModuleProvider extends ServiceProvider
     /**
      * @param DiInterface $di
      */
-    public function register(DiInterface $di)
+    public function register(DiInterface $di): void
     {
         $di->get('registrator')->registerProviders($this->providers);
     }

@@ -25,7 +25,6 @@ namespace Galactium\Space\Translation\Adapter;
 
 use Galactium\Space\Translation\Exception;
 use JsonSerializable;
-use Phalcon\Translate\Adapter;
 use Phalcon\Translate\AdapterInterface;
 
 class NestedArray extends Adapter implements JsonSerializable, AdapterInterface

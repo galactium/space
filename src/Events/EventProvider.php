@@ -24,7 +24,7 @@ namespace Galactium\Space\Events;
 
 
 use Galactium\Space\Di\ServiceProvider;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 
 abstract class EventProvider extends ServiceProvider
 {
@@ -36,7 +36,7 @@ abstract class EventProvider extends ServiceProvider
     /**
      * @param DiInterface $di
      */
-    public function register(DiInterface $di)
+    public function register(DiInterface $di): void
     {
         foreach ($this->listeners as $type => $listener) {
             $di->get('eventsManager')->attach($type, new $listener($di));

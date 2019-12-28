@@ -22,8 +22,8 @@
 
 namespace Galactium\Space\Modules;
 
+use Phalcon\DI\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
-use Phalcon\DiInterface;
 
 
 class Manager implements InjectionAwareInterface
@@ -54,20 +54,21 @@ class Manager implements InjectionAwareInterface
     }
 
     /**
-     * @return DiInterface
+     * @param \Phalcon\Di\DiInterface $container
      */
-    public function getDi()
+    public function setDI(DiInterface $container): void
+    {
+        $this->di = $container;
+    }
+
+    /**
+     * @return \Phalcon\Di\DiInterface
+     */
+    public function getDI(): DiInterface
     {
         return $this->di;
     }
 
-    /**
-     * @param DiInterface $di
-     */
-    public function setDi(DiInterface $di)
-    {
-        $this->di = $di;
-    }
 
     /**
      * @return array

@@ -23,39 +23,39 @@
 namespace Galactium\Space\Events;
 
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
-use Phalcon\DiInterface;
 
 abstract class Listener implements InjectionAwareInterface
 {
     /**
      * @var DiInterface
      */
-    protected $di;
+    protected $container;
 
     /**
      * Listener constructor.
-     * @param DiInterface $di
+     * @param DiInterface $container
      */
-    public function __construct(DiInterface $di)
+    public function __construct(DiInterface $container)
     {
-        $this->di = $di;
+        $this->di = $container;
     }
 
     /**
      * @return DiInterface
      */
-    public function getDI()
+    public function getDI(): DiInterface
     {
         return $this->di;
     }
 
     /**
-     * @param DiInterface $dependencyInjector
+     * @param DiInterface $container
      */
-    public function setDI(DiInterface $dependencyInjector)
+    public function setDI(DiInterface $container): void
     {
-        $this->di = $dependencyInjector;
+        $this->di = $container;
     }
 
 
