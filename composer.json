@@ -18,7 +18,7 @@
   "require": {
     "php": "^7.1",
     "ext-json": "*",
-    "ext-phalcon": "^3.4"
+    "ext-phalcon": "^4.0"
   },
   "require-dev": {
     "phalcon/ide-stubs": "*"
